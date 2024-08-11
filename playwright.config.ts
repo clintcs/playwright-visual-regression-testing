@@ -13,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   snapshotPathTemplate: '{testDir}/{arg}{ext}',
-  
+
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -36,8 +36,17 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'chrome',
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: {
+          args: [
+            '--font-render-hinting=none',
+            '--disable-font-subpixel-positioning',
+            '--disable-lcd-text',
+          ],
+        },
+      },
     },
 
     // {

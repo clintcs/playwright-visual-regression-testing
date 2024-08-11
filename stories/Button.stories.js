@@ -10,15 +10,15 @@ export default {
     variant: 'primary',
     size: 'large',
   },
-  render: (args) => html`
-  <glide-core-button
-    size=${args.size}
-    variant=${args.variant}
-    ?disabled=${args.disabled || nothing}
-  >
-    ${args['slot="default"']}
-  </glide-core-button
-  >`,
+  render: (args) =>
+    html` <style>
+      <glide-core-button
+        size=${args.size}
+        variant=${args.variant}
+        ?disabled=${args.disabled || nothing}
+      >
+        ${args['slot="default"']}
+      </glide-core-button>`,
   argTypes: {
     variant: {
       control: { type: 'radio' },
